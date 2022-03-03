@@ -10,6 +10,8 @@ message = input("Tell me what do you want to know about: ")
 
 prompt = input(message)
 
-for word, meaning in words:
-    if prompt == word:
-        print(meaning)
+print(words[message])
+
+# for word, meaning in words:
+#     if prompt == word:
+#         print(meaning)
