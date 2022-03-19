@@ -4,7 +4,7 @@ class Dog:
 # A function that is a part of a class is called a method
 # The __init__() method is a special method that Python runs automatically when ever we create a new instance based on a class.
     def __init__( self, name, age):
-        """Initialize name and age attrinutes"""
+        """Initialize name and age attributes"""
         self.name = name
         self.age = age
 
@@ -19,3 +19,8 @@ my_dog = Dog('Willie', 6)
 
 print(f"My dog's name is {my_dog.name}.")
 print(f"My dog is {my_dog.age} years old")
+
+your_dog = Dog('Lucy', 3)
+print(f"My dog's name is {your_dog.name}.")
+print(f"My dog is {your_dog.age} years old")
+your_dog.sit()
