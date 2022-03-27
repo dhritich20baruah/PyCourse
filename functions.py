@@ -136,3 +136,20 @@ def show_completed_models(completed_models):
 
 print_models(unprinted_designs, completed_models)
 show_completed_models(completed_models)
+
+# Preventing a function from modifying a list
+# Pass a copy of the list not the original
+# function_name(list_name[:])
+print_models(unprinted_designs[:], completed_models)
+
+# Passing an arbitrary number of arguments
+def make_pizza(*toppings):
+    """Print the list of toppings that has been requested"""
+    print(toppings)
+    for topping in toppings:
+        print(f"{topping}")
+
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+# *toppings tells python to make an empty tupple called toppings and pack in all the value ot recieves
