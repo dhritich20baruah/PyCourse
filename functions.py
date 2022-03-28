@@ -153,3 +153,13 @@ make_pizza('pepperoni')
 make_pizza('mushrooms', 'green peppers', 'extra cheese')
 
 # *toppings tells python to make an empty tupple called toppings and pack in all the value ot recieves
+
+# Mixing Positional and arbitrary arguments
+def make_pizza(size, *toppings):
+    """Print the list of toppings that has been requested"""
+    print(f"\nMaking a {size}-inch pizza with the following toppings")
+    for topping in toppings:
+        print(f"{topping}")
+# Size is positonal argument and arbitrary arguments must be placed lastq
+make_pizza(16,'pepperoni')
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
