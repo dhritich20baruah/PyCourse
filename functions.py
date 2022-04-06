@@ -176,3 +176,16 @@ print(user_profile)
 # The parameter **user_info cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary
 
 # Storing your functions in modules
+def make_pizza(size, *toppings):
+    """Print the list of toppings that has been requested"""
+    print(f"\nMaking a {size}-inch pizza with the following toppings")
+    for topping in toppings:
+        print(f"{topping}")
+
+# In the same directory create a hypothetical separate file called making_pizza.py then import the module and then make two calls to make_pizza()
+import pizza
+
+pizza.make_pizza(16, 'pepperoni')
+pizza.make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+# module_name.function_name()
