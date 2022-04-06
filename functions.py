@@ -163,3 +163,16 @@ def make_pizza(size, *toppings):
 # Size is positonal argument and arbitrary arguments must be placed lastq
 make_pizza(16,'pepperoni')
 make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+# Using arbitrary keyword arguments
+def build_profile(first, last, **user_info):
+    """Build a distionary containing everything we know a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('albert', 'einstein', location='princeton', field='physics')
+
+print(user_profile)
+# The parameter **user_info cause Python to create an empty dictionary called user_info and pack whatever name-value pairs it receives into this dictionary
+
+# Storing your functions in modules
