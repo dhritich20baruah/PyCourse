@@ -1,3 +1,8 @@
-    def __delitem__(self, key):
-        h = self.get_hash(key)
-        self.arr[h] = None
+   # myList.add(8)
+    # myList.add(12)
+    # print("size="+str(myList.get_size()))
+    # myList.remove(8)
+    # print("size="+str(myList.get_size()))
+    # print("Remove 15", myList.remove(15))
+    # print("size="+str(myList.get_size()))
+    # print("Find 25", myList.find(25))
