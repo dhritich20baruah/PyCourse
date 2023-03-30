@@ -5,7 +5,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-url = "https://dhritibaruah.in/articles/html-for-beginners-part-2"
+url = "https://www.assamcareer.com/2021/02/dse-assam-recruitment.html"
 
 # Step 1: Get the HTML
 r = requests.get(url)
@@ -13,7 +13,7 @@ htmlContent = r.content
 # print(htmlContent)
 # Step 2: Parse the HTML
 soup = BeautifulSoup(htmlContent, 'html.parser')
-print(soup.prettify)
+# print(soup.prettify)
 # Step 3: HTML Tree traversal
 title = soup.title
 print(title)
@@ -25,7 +25,7 @@ print(title)
 # 3. BeautifulSoup
 # print(type(soup))
 
-paras = soup.find_all('p')
+paras = soup.find_all('div')
 print(paras)
 
 print(soup.find('h1'))
