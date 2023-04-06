@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/5122970b10.js" crossorigin="anonymous"></script>
+  
+    <title>dhritiBaruah | Blog | Web Dev</title>
+  </head>
+  <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  z-index: 3;
+}
+.brand-title {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+  font-family: "Lobster", cursive;
+}
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar-links li {
+  list-style: none;
+}
+.nav-link:hover{
+  border-bottom: 1px solid indigo;
+}
+.navbar-links ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 0.8rem;
+  display: block;
+}
+.navbar-links li:hover {
+  background-color: grey;
+  color: white;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: yellow;
+  border-radius: 10px;
+}
+
+@media (max-width: 450px) {
+  .navbar{
+    max-width: 100%;
+    background-color: indigo;
+   
+  }
+  .toggle-button {
+    display: flex;
+  }
+  .navbar-links {
+    display: none;
+    max-width: 100%;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-links ul {
+    max-width: 100%;
+    flex-direction: column;
+  }
+  .navbar-links li {
+    text-align: center;
+  }
+  .navbar-links li a {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links.active {
+    display: flex;
+  }
+}
+.section-title{
+  color: indigo; 
+  background-color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 2em;
+}
+/* Home Section */
+#home {
+  height: 100vh;
+  background-color: indigo;
+}
+.banner-text {
+  width: 100%;
+  position: absolute;
+  margin-top: 10%;
+  text-shadow: black 1px 1px;
+}
+.banner-text h1 {
+  text-align: center;
+  font-size: 9rem;
+}
+.banner-text h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+/* About */
+#about {
+  display: flex;
+  flex-direction: column;
+  color: indigo;
+  background-color: white;
+  min-height: 100vh;
+}
+#about-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#about-para {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+}
+#about-para h3 {
+  text-align: center;
+}
+#about-para p {
+  font-size: 1.2em;
+  margin-top: 2em;
+  text-align: justify;
+}
+.tech-img {
+  display: flex;
+  flex-direction: row;
+}
+.tech-img img {
+  height: 5em;
+  margin-left: 2em;
+}
+.techlist h3 {
+  text-align: center;
+}
+
+#tech-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: white;
+  color: indigo;
+  max-width: 40vw;
+  border-style: dashed;
+  padding: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: black;
+}
+.tech ul {
+  list-style: disc;
+}
+@media (max-width: 450px) {
+  .tech-img {
+    display: none;
+  }
+  #about-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .banner-text h1 {
+    font-size: 4em;
+    margin-top: 20%;
+  }
+  .banner-text h2 {
+    font-size: 2em;
+  }
+  #about-para {
+    text-align: justify;
+    min-width: 90vw;
+    margin: auto;
+  }
+  #about-para p {
+    margin-top: 1em;
+  }
+  #tech-stack {
+    width: 90vw;
+    margin: auto;
+    font-size: 1em;
+  }
+}
+/* Portfolio */
+
+#portfolio .card-link a{
+  text-decoration: none;
+}
+#portfolio button{
+  border: none;
+  background-color: white;
+  width: fit-content;
+  color: indigo;
+  padding: 1em;
+}
+#portfolio button:hover{
+  background-color: orange;
+}
+
+
+/* Blogs */
+#blog {
+  background-color: white;
+}
+#blog h1 {
+  text-align: center;
+  color: indigo;
+  padding-top: 50px;
+}
+/* Contact */
+#contact {
+  background-color: white;
+}
+.card-group,
+.contact-card {
+  background-color: white;
+}
+.contact-left {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  color: indigo;
+}
+.contact-right {
+  background-color: white;
+  color: indigo;
+}
+.contact-img {
+  display: flex;
+  flex-direction: row;
+  padding: 2em 2em;
+  justify-content: left;
+}
+
+#contact .fa {
+  font-size: 1.5em;
+  color: indigo;
+  margin-left: 1em;
+}
+#contact .fa:hover {
+  color: orange;
+}
+/* POST */
+#posts {
+  background-color: indigo;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+#blog-post {
+  margin-top: 5em;
+}
+.blog-card{
+  height:100vh;
+}
+#posts h1 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+#recentpost a{
+  text-decoration: none;
+}
+.hide{
+  display: none;
+}
+/* SHAPE DIVIDER */
+.custom-shape-divider-bottom-1646365451 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1646365451 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 231px;
+}
+
+.custom-shape-divider-bottom-1646365451 .shape-fill {
+  fill: white ;
+}
+  </style>
+  <body>
+    <section id="home">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand brand-title text-white" href="/">dhritiBaruah</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+              <ul class="navbar-nav " >
+                <li class="nav-item">
+                  <a class="nav-link active fw-bold text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active fw-bold text-white" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active fw-bold text-white" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active fw-bold text-white" href="#blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active fw-bold text-white" href="#contact">Contact</a>
+                </li>
+              </ul>      
+            </div>
+          </div>
+        </nav>
+       
+      <div class="banner-text">
+        <h1 class="text-white">Hi, I am Dhriti</h1>
+        <h2 class="text-white">I like to build stuff for the web.</h2>
+      </div>
+      <div class="custom-shape-divider-bottom-1646365451">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title text-center my-3">ABOUT</h2>
+      <div id="about-content" class="my-3">
+        <div id="about-para" data-aos="fade-right" class="my-2">
+          <h3>A little about me.</h3>
+          <p>
+            I like to build websites and web applications, which are responsive, attractive and fast. Then after building them I like to deploy them. Apart from using libraries like bootstrap I use a lot of custom CSS. For the backend I use NodeJS/ ExpressJS and for database MongoDB is my choice.
+          </p>
+        
+        </div>
+        <div class="techlist" data-aos="fade-left" id="techskills">
+          <h3 class="section-secondary my-3">Some technologies that I use:</h3>
+          <div id="tech-stack" class="my-2">
+            <div class="tech">
+              <ul>
+                <li>Javascript (ES6)</li>
+                <li>NodeJS</li>
+                <li>ExpressJS</li>
+                <li>ReactJS</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="w-75 mx-auto fs-bold text-danger">
+
+    <h2 class="section-title text-center">PROJECTS</h2>
+    <section id="portfolio">
+      <div class="card-group" data-aos="fade-up">
+        <!-- PERI MONTESSORI -->
+        <div class="card m-3 border-white shadow">
+          <img src="/images/peri.JPG" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">PERI Montessori</h5>
+            <p class="card-text">This website was made for PERI Montessori, Dibrugarh
+              center, a teachers training institute. The website is
+              built my vanillaJS and bootstrap at the frontend;
+              nodeJS/expressJS at the backend and MongoDB atlas for
+              database. The site helps the owner to maintain student
+              records and provide regular information to the students
+              and general public. It also contains a file sharing
+              application by which students and faculty can exchange
+              notes and assignments.</p>
+              <p class="card-link"><a href="http://peridibrugarh.online/">
+                <button class="page-link">Visit >></button></a></p>
+          </div>
+        </div>
+        <!-- SSC CLASSES -->
+        <div class="card m-3 border-white shadow">
+          <img src="/images/sscc.JPG" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">SSC Classes</h5>
+            <p class="card-text">This website was made for S.S.C. Classes, a private
+              tutorial center. The website is built my vanillaJS and
+              bootstrap at the frontend; nodeJS/expressJS at the backend
+              and MongoDB atlas for database. It also contains a mark
+              down for a blog where the owner can post regularly. Also
+              there is a job and career section where career related
+              information is published. The site helps the owner to
+              maintain student records and manage content by simply
+              logging in.</p>
+            <p class="card-link"><a href="http://ssclasses.online/">
+                <button class="page-link">Visit >></button></a></p>
+          </div>
+        </div>
+        <!-- RD engineering -->
+        <div class="card m-3 border-white shadow">
+          <img src="/images/rdfab.JPG" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">R D Engineering work</h5>
+            <p class="card-text">This is a ongoing work for metal fabrication company. Technologies used are React, express and mongoDB. The website will also feature a blog.</p>
+            <p class="card-link"><a href="#">
+              <button class="page-link">Visit >></button></a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-group" class="fade-up">
+        <!-- News app -->
+        <div class="card m-3 border-white shadow">
+          <img src="/images/newsapi.JPG" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">News App</h5>
+            <p class="card-text">This is a react application that scraps the websites of few newsoutlets and displays them.</p>
+            <p class="card-link"><a href="#">
+              <button class="page-link">Visit >></button></a></p>
+          </div>
+        </div>
+        <!-- Maple -->
+        <div class="card m-3 border-white shadow">
+          <img src="/images/Maple.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Maple</h5>
+            <p class="card-text">A ecommerce template created by using HTML, bootstrap5 and minimal custom CSS. The theme contains multiple HTML pages to choose from. It is fully responsive and easy to customise.</p>
+          </div>
+        </div>
+
+        <div class="card m-3 border-white shadow">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+        </div>
+      </div>             
+      <hr class="w-75 mx-auto fs-bold text-danger">
+    </section>
+    <!-- BLOG -->
+  
+
+    <hr class="w-75 mx-auto fs-bold text-danger">
+
+    <section id="contact" class="container-fluid mt-5">
+      <h2 class="section-title text-center">CONTACT</h2>
+      <div class="card-group" data-aos="fade-up">
+        <div class="card contact-card">
+          <div class="card-body contact-body contact-left">
+            <h3 class="section-title mx-3 my-3">Write to me:</h3>
+            <h4 class="section-title mx-3">dhriti.baruah20@gmail.com</h4>            
+            <div class="contact-img">
+            
+              <a href="https://github.com/dhritich20baruah"><i class="fa fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/dhritiman-chandra-baruah-7b6681ba/"><i class="fa fa-linkedin-square"></i></a>
+             
+              <a href="https://www.youtube.com/channel/UCWJ8XWyI44xJHbZi48kZurw"><i class="fa fa-youtube-play"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card contact-card">
+          <div class="card-body contact-body contact-right">
+          <h3 class="section-title text-center">Have a query? Please leave a message.</h3>
+          <form class="my-3 mx-3" action="/query" method='POST'>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <input type="text" class="form-control" id="message" name='message' required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        </div>
+      </section>
+      <%- include('../partials/foot.ejs') %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
