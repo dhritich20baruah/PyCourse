@@ -1,16 +1,35 @@
 from bs4 import BeautifulSoup
 import requests
+import time
 
-html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Reactjs&txtLocation=').text
-soup = BeautifulSoup(html_text, 'lxml')
-jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
-for job in jobs:
-    published_date = job.find('span', class_='sim-posted').span.text
-    if 'few' in published_date:
-        company_name = job.find('h3', class_='joblist-comp-name').text.replace(' ','')
-        skills = job.find('span', class_='srp-skills').text
-        print(f'''
-        Company Name: {company_name}
-        Required Skills: {skills}
-        ''')
-        print('###############################')
+print('Enter a skill that you are not familiar with:')
+unfamiliar_skill = input('>')
+print(f'Filitering out {unfamiliar_skill}')
+
+def find_jobs():
+    html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Reactjs&txtLocation=').text
+    soup = BeautifulSoup(html_text, 'lxml')
+    jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
+    for index, job in enumerate(jobs):
+        published_date = job.find('span', class_='sim-posted').span.text
+        if 'few' in published_date:
+            company_name = job.find('h3', class_='joblist-comp-name').text.replace(' ','')
+            skills = job.find('span', class_='srp-skills').text
+            more_info = job.header.h2.a['href']
+            if unfamiliar_skill not in skills:
+                with open(f'posts/{index}.txt', 'w') as f:
+                    f.write(f"Company Name: {company_name.strip()} \n")
+                    f.write(f"Required Skills: {skills.strip()} \n")
+                    f.write(f'More info: {more_info} \n')
+                    # print(f'''
+                    # Company Name: {company_name}
+                    # Required Skills: {skills}
+                    # ''')
+                print(f'File saved: {index}')
+
+if __name__ == '__main__':
+    while True:
+        find_jobs()
+        # time_wait = 10
+        # print(f'Waiting {time_wait} minutes...')
+        # time.sleep(600)
