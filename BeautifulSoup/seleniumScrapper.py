@@ -11,6 +11,5 @@ elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
 assert "No results found." not in driver.page_source
-# a = input()
-time.sleep(6)
+a = input()
 driver.close()
