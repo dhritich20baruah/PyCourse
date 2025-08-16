@@ -14,7 +14,7 @@ country_map = {
 }
 
 # MongoDB connection
-client = MongoClient("mongodb+srv://dhriti:flightno714@testcluster.kzjod.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("")
 db = client["test"]
 collection = db["holidays"]
 
