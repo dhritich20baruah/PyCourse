@@ -1,20 +1,23 @@
 import os
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MONGO_URI = os.getenv('MONGO_URI')
 
 # Country mapping
 country_map = {
-    7: "Falkland_Islands",
-    8: "Faroe_Islands",
-    9: "Fiji",
-    10: "Finland",
-    11: "France",
-    12: "French_Guiana",
-    13: "French_Polynesia"
+       11:"Wallis_and_Futuna",
+       12: "Yemen",
+       13: "Zambia",
+       14: "Zimbabwe",
+       15: "The_Cook_Islands"
 }
 
 # MongoDB connection
-client = MongoClient("")
+client = MongoClient(MONGO_URI)
 db = client["test"]
 collection = db["holidays"]
 

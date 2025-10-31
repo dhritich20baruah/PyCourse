@@ -5,8 +5,12 @@ import time
 
 driver = webdriver.Chrome()
 query = "holiday"
-file = 7
-for country in [ "falkland-islands", "faroe-islands", "fiji", "finland", "france", "french-guiana", "french-polynesia"]:
+file = 11
+for country in ["wallis-and-futuna",
+        "yemen",
+        "zambia",
+        "zimbabwe",
+        "cook-islands"]:
     driver.get(f"https://www.timeanddate.com/holidays/{country}/2026")
 
     elems = driver.find_elements(By.CLASS_NAME, "table--holidaycountry")
