@@ -6,7 +6,7 @@ import time
 driver = webdriver.Chrome()
 query = "job"
 
-driver.get(f"https://www.assamcareer.com/2021/08/neepco-apprentice.html")
+driver.get(f"https://www.assamcareer.com/2022/12/ahidms-recruitment.html")
 
 elems = driver.find_elements(By.ID, "PostBody")
 print(f"{len(elems)} items found")

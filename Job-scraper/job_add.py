@@ -44,6 +44,7 @@ def rephrase_job_description(content_text, job_title):
             model='gemini-2.0-flash', # Switched to 2.5-flash for speed/cost
             contents=prompt
         )
+        print(response)
         return response.text.strip()
     except APIError as e:
         print(f"  ❌ Gemini API Error for job {job_title}: {e}")
@@ -57,8 +58,39 @@ def process_single_job_html(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
 
     # Attempt to extract title (Assuming it's in a prominent bold span near the start)
-    title_tag = soup.select_one('div span b') 
+    # container = soup.find_all('div', class_='job-post-container')
+    title_tag = soup.select_one('#PostBody > div:nth-of-type(1) span') 
     job_title = title_tag.get_text(strip=True) if title_tag else "Unknown Job Title"
+
+    date_tag = soup.select_one('span > b')
+    pattern = r'^Last Date:\s*\.?'
+    date_string = date_tag.get_text(strip=True) if date_tag else "N/A"
+    last_date_str = re.sub(pattern, '', date_string, flags=re.IGNORECASE).strip()
+
+    # --- B. Link Extraction ---
+    links = {
+        "online_application_forms": [],
+        "advertisement_details": [],
+        "official_website": []
+    }
+
+    tbody = soup.find('tbody')
+    if tbody:
+        for row in tbody.find_all('tr'):
+            columns = row.find_all('td')
+            if len(columns) == 2:
+                label_text = columns[0].get_text(strip=True)
+                link_tag = columns[1].find('a')
+
+                if link_tag and link_tag.has_attr('href'):
+                    href = link_tag['href']
+
+                    if "Online Application Form" in label_text:
+                        links["online_application_forms"].append(href)
+                    elif "Advertisement Details" in label_text:
+                        links["advertisement_details"].append(href)
+                    elif "Official Website" in label_text:
+                        links["official_website"].append(href)
     
     # ------------------ Cleaning Steps ------------------
     # Remove known junk tags first
@@ -81,7 +113,7 @@ def process_single_job_html(html_content):
     combined_text = re.sub(r'\n{3,}', '\n\n', combined_text).strip()
     combined_text = combined_text.replace('&amp;', '&')
     
-    return job_title, combined_text
+    return job_title, last_date_str, combined_text, links
 
 def main_process(folder_path="job"):
     """Iterates through HTML files, processes them, and stores results."""
@@ -103,25 +135,33 @@ def main_process(folder_path="job"):
         html_content = file.read()
     
     # Extract and clean
-    title, raw_description = process_single_job_html(html_content)
-    print(f"  -> Extracted Title: {title}")
+    title, last_date_str, raw_description, job_links = process_single_job_html(html_content)
+    # print(f"  -> Extracted Title: {title}")
     
     # Rephrase
     rephrased_description = rephrase_job_description(raw_description, title)
-    print("  -> Rephrasing Complete.")
+    # print("  -> Rephrasing Complete.")
+
+    
+
+    posts_match = re.search(r'No of posts:.*?(\d+)\s+posts', raw_description, re.IGNORECASE)
+    total_posts = int(posts_match.group(1)) if posts_match and posts_match.group(1).isdigit() else 0
 
     # Store in MongoDB
     data_to_save = {
         'title': title,
-        'original_description': raw_description,
-        'rephrased_description': rephrased_description,
-        'date_processed': datetime.datetime.utcnow(),
-        'source_file': file_name 
+        'lastDate': last_date_str, 
+        'Post': total_posts,
+        'description': rephrased_description,
+        'category': 'Assam Health Infrastructure Development & Management Society',
+        'advLink': job_links['advertisement_details'][0] if job_links['advertisement_details'] else None,
+        'applyLink': job_links['online_application_forms'][0] if job_links['online_application_forms'] else None,
+        'createdAt': datetime.datetime.utcnow(),
     }
     
     try:
-        # collection.insert_one(data_to_save)
-        print(data_to_save)
+        collection.insert_one(data_to_save)
+        # print(data_to_save)
         print(f"  ✅ Successfully stored job: {title} in MongoDB.")
     except Exception as e:
         print(f"  ❌ Failed to store job {title}: {e}")
