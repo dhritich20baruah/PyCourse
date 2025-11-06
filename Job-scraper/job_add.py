@@ -149,12 +149,12 @@ def main_process(folder_path="job"):
 
     # Store in MongoDB
     data_to_save = {
-        'title': title,
-        'lastDate': last_date_str, 
+        'title': "ONGC Apprentice Recruitment 2025 – 2623 Apprentice Posts",
+        'lastDate': "30/11/2025", 
         'Post': total_posts,
-        'description': rephrased_description,
-        'category': 'Assam Health Infrastructure Development & Management Society',
-        'advLink': job_links['advertisement_details'][0] if job_links['advertisement_details'] else None,
+        'description': rephrased_description,   
+        'category': 'Punjab National Bank',
+        'advLink': job_links['advertisement_details'][0] if job_links['advertisement_details'] else "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxxnb3OojEDz_MBSASvkzLErsFz1fw_CRH7mzWIDA9uBjO8nI4UcrJzzInCIeqSV96C51z0thg-qQQQmsbTBDkkTmxzXTw1YFwVEcmGRrz6yqYG1FOzel9-P4FAhtFgW_pE_MzctFxcYELkawEqqAG9TiI6StOWKG31IGQNgQLE2Sm5f_FWX5rcMp8WwY/s865/NABARD-Grade-A-Assistant-Manager-Recruitment-2025.png",
         'applyLink': job_links['online_application_forms'][0] if job_links['online_application_forms'] else None,
         'createdAt': datetime.datetime.utcnow(),
     }
